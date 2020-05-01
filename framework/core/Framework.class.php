@@ -45,7 +45,7 @@ class Framework {
     // Load core classes
     require CORE_PATH . "Controller.class.php";
     require CORE_PATH . "Loader.class.php";
-    //require DB_PATH . "Mysql.class.php";
+    require DB_PATH . "Mysql.class.php";
     //require CORE_PATH . "Model.class.php";
 
     // Load configuration file

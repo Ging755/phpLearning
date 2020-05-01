@@ -2,25 +2,52 @@
 
 <head>
     <script>
-        function onButtonClick() {
-            console.log(this);
+        function onEdit(id){
+            window.location.href = "/index?a=update&id=" + id;
         }
     </script>
 </head>
 
 <body>
-    <H1>
-        HELLO WORLD
-    </H1>
-    <h2>
-        <?php echo $this->parameter ?>
-    </h2>
-    <h3>
-        <?php echo (json_encode($this->users[0])); ?>
-    </h3>
-    <button onclick="onButtonClick()">
-        Test To Click
-    </button>
+    <h1>
+        List Of Makes
+    </h1>
+    <a href="/index?a=create">Create</a>
+    <?php
+    if (count($this->makes) > 0) {
+        echo "
+            <table>
+                <tr>
+                    <th>
+                        Id
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Abrv
+                    </th>
+                    <th>
+                        Date Created
+                    </th>
+                    <th>
+                        Last Update
+                    </th>
+                </tr>";
+        foreach ($this->makes as &$value) {
+            echo "<tr onclick=\"onEdit(" . $value["Id"] . ")\">
+                <td>". $value["Id"] . "</td>
+                <td>". $value["Name"] . "</td>
+                <td>". $value["Abrv"] . "</td>
+                <td>". $value["DateCreated"] . "</td>
+                <td>". $value["DateUpated"] . "</td>
+            </tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "<h2> List is empty </h2>";
+    }
+    ?>
 </body>
 
 </html>
