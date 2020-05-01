@@ -6,6 +6,8 @@
 
    RewriteEngine on
 
+   AddType application/x-httpd-php .htm .html
+
 
    # Send request via index.php
 
