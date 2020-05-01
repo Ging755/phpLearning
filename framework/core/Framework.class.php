@@ -81,8 +81,6 @@ class Framework {
 
         $controller_name = CONTROLLER . "Controller";
         $action_name = ACTION . "Action";
-        echo "<script>console.log('Debug Objects: " . ACTION . "' );</script>";
-        echo "<script>console.log('Debug Objects: " . CONTROLLER . "' );</script>";
         $controller = new $controller_name;
         $controller->$action_name();
     }
