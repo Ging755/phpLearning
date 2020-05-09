@@ -28,11 +28,17 @@ class IndexController extends Controller
 
     public function updateAction()
     {
-        if (($_SERVER["REQUEST_METHOD"] == "PUT")) {
+        $makeModel = new MakeModel();
+        $makeObj = new stdClass();
+
+        if (($_SERVER["REQUEST_METHOD"] == "POST")) {
+            $makeObj->Id = $_REQUEST['fid'];
+            $makeObj->Name = $_REQUEST['fname'];
+            $makeObj->Abrv = $_REQUEST['fabrv'];
+            $makeModel->updateMakeById($makeObj);
             header('location: /index');
         } else if (($_SERVER["REQUEST_METHOD"] == "GET")) {
             if (isset($_REQUEST['id'])) {
-                $makeModel = new MakeModel();
                 $this->make = $makeModel->getMakeById($_REQUEST['id']);
                 include  CURR_VIEW_PATH . "update.php";
             }

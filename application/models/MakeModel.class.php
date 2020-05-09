@@ -49,4 +49,18 @@ class MakeModel
             echo "Error: " . $e->getMessage();
         }
     }
+
+    public function updateMakeById($make)
+    {
+        try {
+            $this->db->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            $sql = "UPDATE `makes` SET
+            `Name`= '$make->Name',
+            `Abrv`= '$make->Abrv'
+             WHERE Id = $make->Id";
+            $this->db->conn->exec($sql);
+        } catch (PDOException $e) {
+            echo $sql . "<br>" . $e->getMessage();
+        }
+    }
 }
